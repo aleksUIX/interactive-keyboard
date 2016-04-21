@@ -13,6 +13,9 @@ var sass = require('gulp-sass');
 var open = require('gulp-open');
 var platform = require('platform');
 
+/////////////////////
+//TODO: add unit testing workflow and write tests
+/////////////////////
 
 gulp.task('test', function () {
     return gulp.src(['src/**/*Spec.js'], { read: false })
@@ -92,7 +95,6 @@ gulp.task('sass', function() {
 gulp.task('sass-watch', function() {
   gulp.watch('./src/sass/*.scss', ['sass']);
 });
-
 
 // gulp.task('default', ['watch', 'sass-watch', 'sass', 'connect']);
 gulp.task('default', ['watch',  'connect']);

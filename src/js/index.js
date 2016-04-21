@@ -1,5 +1,11 @@
-(function() {
+import Keyboard from './views/keyboard'
 
-  console.log('init')
 
-})()
+class App {
+  constructor() {
+    console.log('initiated')
+    const keyboard = new Keyboard()
+  }
+}
+
+const app = new App()
