@@ -18,7 +18,7 @@ var platform = require('platform');
 /////////////////////
 
 gulp.task('test', function () {
-    return gulp.src(['src/**/*Spec.js'], { read: false })
+    return gulp.src(['src/js/**/*Spec.js'], { read: false })
         .pipe(mocha({ reporter: 'spec' }))
         .on('error', util.log);
 });
