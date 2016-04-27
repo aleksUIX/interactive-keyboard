@@ -12,6 +12,7 @@ var uglifyify = require('uglifyify');
 var sass = require('gulp-sass');
 var open = require('gulp-open');
 var platform = require('platform');
+var babelCompiler = require('babel-core/register')
 
 /////////////////////
 //TODO: add unit testing workflow and write tests
@@ -19,7 +20,12 @@ var platform = require('platform');
 
 gulp.task('test', function () {
     return gulp.src(['src/js/**/*Spec.js'], { read: false })
-        .pipe(mocha({ reporter: 'spec' }))
+        .pipe(mocha({
+          reporter: 'spec',
+          compilers: {
+            js: babelCompiler
+          }
+        }))
         .on('error', util.log);
 });
 
@@ -63,7 +69,8 @@ function watch() {
 };
 
 gulp.task('build', function() { return compile(); });
-gulp.task('watch', function() { return watch(); });
+gulp.task('watch-js', function() { return watch(); });
+gulp.task('watch', ['test', 'watch-js']);
 
 gulp.task('connect', function() {
   connect.server({
@@ -97,4 +104,4 @@ gulp.task('sass-watch', function() {
 });
 
 // gulp.task('default', ['watch', 'sass-watch', 'sass', 'connect']);
-gulp.task('default', ['watch',  'connect']);
+gulp.task('default', ['test', 'watch',  'connect']);

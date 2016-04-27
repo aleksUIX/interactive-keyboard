@@ -1,5 +1,7 @@
 var assert = require('chai').assert;
-describe('keyboard service', function() {
+import KeyboardRenderer from './keyboardRenderer'
+
+describe('keyboard renderer', function() {
 
   it('should be truthy', function() {
     assert.equal(1, '1')
