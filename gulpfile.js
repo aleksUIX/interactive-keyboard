@@ -56,7 +56,7 @@ function compile(watch) {
   if (watch) {
     bundler.on('update', function() {
       console.log('-> bundling...');
-      gulp.start('test');
+      // gulp.start('test');
       rebundle();
     });
   }
@@ -70,7 +70,7 @@ function watch() {
 
 gulp.task('build', function() { return compile(); });
 gulp.task('watch-js', function() { return watch(); });
-gulp.task('watch', ['test', 'watch-js']);
+gulp.task('watch', ['watch-js']);
 
 gulp.task('connect', function() {
   connect.server({
@@ -104,4 +104,4 @@ gulp.task('sass-watch', function() {
 });
 
 // gulp.task('default', ['watch', 'sass-watch', 'sass', 'connect']);
-gulp.task('default', ['test', 'watch',  'connect']);
+gulp.task('default', ['watch',  'connect']);
